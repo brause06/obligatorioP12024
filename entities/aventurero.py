@@ -21,10 +21,6 @@ class Aventurero(ABC):
     def id(self):
         return self.__id
     
-    @id.setter
-    def id(self, nuevo_nombre):
-        self.__id = nuevo_nombre
-
     @property
     def puntos_habilidad(self):
         return self.__puntos_habilidad
@@ -52,3 +48,7 @@ class Aventurero(ABC):
     @property
     def misiones_completadas(self):
         return self.__misiones_completadas
+    
+    def __eq__(self, otro_aventurero):
+        return self.id == otro_aventurero.id
+    
