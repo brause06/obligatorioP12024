@@ -49,3 +49,6 @@ class Aventurero(ABC):
     def dinero(self, nuevo_dinero):
         self.__dinero = nuevo_dinero
 
+    @property
+    def misiones_completadas(self):
+        return self.__misiones_completadas
