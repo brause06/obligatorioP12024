@@ -12,4 +12,6 @@ class Guerrero(Aventurero):
 
     @fuerza.setter
     def fuerza(self, value):
+        if not(1 <= value <= 100):
+            raise ValueError("La fuerza debe estar entre 1 y 100")
         self._fuerza = value

@@ -17,4 +17,6 @@ class Mascota:
     
     @puntos_habilidad.setter
     def puntos_habilidad(self, value):
+        if not(1 <= value <= 50):
+            raise ValueError("Los puntos de habilidad deben estar entre 1 y 50")
         self._puntos_habilidad = value

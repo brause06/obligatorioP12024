@@ -31,6 +31,8 @@ class Aventurero(ABC):
 
         @puntos_habilidad.setter
         def puntos_habilidad(self, value):
+            if not(1 <= value <= 100):
+                raise ValueError("Los puntos de habilidad deben estar entre 1 y 100")
             self._puntos_habilidad = value
 
         @property
