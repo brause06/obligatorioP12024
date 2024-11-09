@@ -29,3 +29,10 @@ def agregar_mision(self, mision: Mision) -> bool:
     self._misiones[mision.nombre] = mision
     return True
 
+def buscar_aventurero(self, id: int) -> Aventurero:
+    return self._aventureros.get(id)
+
+def buscar_mision(self, nombre: str) -> Mision:
+    return self._misiones.get(nombre)
+
+
