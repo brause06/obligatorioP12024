@@ -23,3 +23,4 @@ class Gremio:
     @misiones.setter
     def misiones(self, misiones: Dict[str, Mision]):
         self._misiones = misiones
+

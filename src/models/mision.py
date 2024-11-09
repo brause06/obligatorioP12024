@@ -1,39 +1,39 @@
 class Mision:
     def __init__(self, nombre: str, ranking: int, recompensa: int, es_grupal: bool, min_miembros: int = 1):
-        self.__nombre = nombre
-        self.__ranking = ranking
-        self.__recompensa = recompensa
-        self.__es_grupal = es_grupal
-        self.__min_miembros = min_miembros if es_grupal else 1
-        self.__completada = False
+        self._nombre = nombre
+        self._ranking = ranking
+        self._recompensa = recompensa
+        self._es_grupal = es_grupal
+        self._min_miembros = min_miembros if es_grupal else 1
+        self._completada = False
 
     @property
     def nombre(self):
-        return self.__nombre
+        return self._nombre
 
     @nombre.setter
     def nombre(self, value):
-        self.__nombre = value
+        self._nombre = value
 
     @property
     def ranking(self):
-        return self.__ranking
+        return self._ranking
 
     @ranking.setter
     def ranking(self, value):
-        self.__ranking = value
+        self._ranking = value
 
     @property
     def recompensa(self):
-        return self.__recompensa
+        return self._recompensa
 
     @recompensa.setter
     def recompensa(self, value):
-        self.__recompensa = value
+        self._recompensa = value
 
     @property
     def es_grupal(self):
-        return self.__es_grupal
+        return self._es_grupal
 
     @es_grupal.setter
     def es_grupal(self, value):
@@ -41,16 +41,16 @@ class Mision:
 
     @property
     def min_miembros(self):
-        return self.__min_miembros
+        return self._min_miembros
 
     @min_miembros.setter
     def min_miembros(self, value):
-        self.__min_miembros = value
+        self._min_miembros = value
 
     @property
     def completada(self):
-        return self.__completada
+        return self._completada
 
     @completada.setter
     def completada(self, value):
-        self.__completada = value
+        self._completada = value
