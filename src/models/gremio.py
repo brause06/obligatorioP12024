@@ -12,15 +12,20 @@ class Gremio:
     def aventureros(self) -> Dict[int, Aventurero]:
         return self._aventureros
 
-    @aventureros.setter
-    def aventureros(self, aventureros: Dict[int, Aventurero]):
-        self._aventureros = aventureros
 
     @property
     def misiones(self) -> Dict[str, Mision]:
         return self._misiones
 
-    @misiones.setter
-    def misiones(self, misiones: Dict[str, Mision]):
-        self._misiones = misiones
+def agregar_aventurero(self, aventurero: Aventurero) -> bool:
+    if aventurero.id in self._aventureros:
+        return False
+    self._aventureros[aventurero.id] = aventurero
+    return True
+
+def agregar_mision(self, mision: Mision) -> bool:
+    if mision.nombre in self._misiones:
+        return False
+    self._misiones[mision.nombre] = mision
+    return True
 
