@@ -41,3 +41,26 @@ class Menu:
                 print("Valor invalido")
             
 
+    def registrar_aventurero(self):
+        pass
+
+    def registrar_mision(self):
+        pass
+
+    def realizar_mision(self):
+        pass
+
+    def run(self):
+        while True:
+            self.display_menu()
+            opcion = self.get_valid_input("Ingrese la opcion deseada: ", ["1", "2", "3", "4", "5"])
+            if opcion == "1":
+                self.registrar_aventurero()
+            elif opcion == "2":
+                self.registrar_mision()
+            elif opcion == "3":
+                self.realizar_mision()
+            elif opcion == "4":
+                pass
+            elif opcion == "5":
+                break
