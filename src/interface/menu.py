@@ -1,4 +1,8 @@
 from obligatorioP12024.src.models.gremio import Gremio
+from obligatorioP12024.src.models.guerrero import Guerrero
+from obligatorioP12024.src.models.mago import Mago
+from obligatorioP12024.src.models.mascota import Mascota
+from obligatorioP12024.src.models.ranger import Ranger
 
 
 class Menu:
@@ -42,7 +46,57 @@ class Menu:
             
 
     def registrar_aventurero(self):
-        pass
+        print("\nRegistro de Aventurero")
+        print("Elija la clase del aventurero:")
+        print("1. Guerrero")
+        print("2. Mago")
+        print("3. Ranger")
+
+        class_opcion = self.get_valid_input("Seleccione una opcion (1-3): ", ["1", "2", "3"])
+
+        try:
+            name = input("Ingrese el nombre: ")
+            if not name:
+                print("El nombre no puede estar vacio")
+                return
+            
+            id = self.get_valid_int("Ingrese el id del aventurero: ", 0, 10000)
+            if id in self.gremio.aventureros:
+                print("Ya existe un aventurero con ese id")
+                return
+            
+            puntos_habilidad = self.get_valid_int("Ingrese los puntos de habilidad (1-100): ", 1, 100)
+            experiencia = self.get_valid_int("Ingrese la experiencia: ", 0, 100000)
+            dinero = self.get_valid_float("Ingrese el dinero: ", 0.0)
+
+            #CREAR AVENTURERO
+            aventurero = None
+            if class_opcion == 1: # Guerrero
+                fuerza = self.get_valid_int("Ingrese la fuerza (1-100): ", 1, 100)
+                aventurero = Guerrero(name, id, puntos_habilidad, experiencia, dinero, fuerza)
+
+            elif class_opcion == "2": #Mago
+                mana = self.get_valid_int("Ingrese el mana (1-1000): ", 1, 1000)
+                aventurero = Mago(name, id, puntos_habilidad, experiencia, dinero, mana)
+
+            else: # Ranger
+                aventurero = Ranger(name, id, puntos_habilidad, experiencia, dinero)
+                tiene_mascota = self.get_valid_input("El aventurero tiene mascota? (s/n): ", ["s", "n"])
+                if tiene_mascota == "s":
+                    nombre_mascota = input("Ingrese el nombre de la mascota: ")
+                    if not nombre_mascota:
+                        print("El nombre de la mascota no puede estar vacio")
+                        return
+                    habilidad_mascota = self.get_valid_int("Ingrese la habilidad de la mascota (1-50): ", 1, 50)
+                    aventurero.mascota(Mascota(nombre_mascota, habilidad_mascota))
+
+            if self.gremio.agregar_aventurero(aventurero):
+                print("Aventurero registrado con exito")
+            else:
+                print("Error al registrar el aventurero")
+            
+        except ValueError as e:
+            print(f"Error: {str(e)}")
 
     def registrar_mision(self):
         pass
