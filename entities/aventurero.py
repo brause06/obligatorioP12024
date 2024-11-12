@@ -7,6 +7,7 @@ class Aventurero(ABC):
         self.__puntos_habilidad = puntos_habilidad
         self.__experiencia = experiencia
         self.__dinero = dinero
+        self.__misiones_completadas = []  
 
     @property
     def nombre(self):
@@ -26,7 +27,7 @@ class Aventurero(ABC):
     
     @puntos_habilidad.setter
     def puntos_habilidad(self, valor):
-        if not (1>= valor <= 100):
+        if not (0 <= valor <= 100):
             raise ValueError("Los puntos de habilidad deben estar entre 1 y 100.")
         self.__puntos_habilidad = valor
     
@@ -46,4 +47,10 @@ class Aventurero(ABC):
     def dinero(self, valor):
         self.__dinero = valor
 
-        
+    def completar_mision(self, mision): 
+        self.__misiones_completadas.append(mision)
+
+    def cant_misiones_completadas(self):
+        return len(self.__misiones_completadas)
+
+

@@ -19,6 +19,13 @@ class Menu:
         print("4. Otras consultas")
         print("5. Salir")
 
+    def display_submenu_consultas(self):
+        print("\nConsultas:")
+        print("1. Ver Top 10 Aventureros con Más Misiones Resueltas")
+        print("2. Ver Top 10 Aventureros con Mayor Habilidad")
+        print("3. Ver Top 5 Misiones con Mayor Recompensa")
+        print("4. Volver al menú principal")
+
     def get_valid_input(self, prompt: str, opciones_validas: List[str]):
         user_input = input(prompt)
         if user_input in opciones_validas:
@@ -54,6 +61,7 @@ class Menu:
         print("1 - Guerrero")
         print("2 - Mago")
         print("3 - Ranger")
+
         
         opcion_clase = self.get_valid_input("Ingrese el número de la clase (1-3): ", ["1", "2", "3"])
         if opcion_clase is None:
@@ -104,21 +112,26 @@ class Menu:
         if self.gremio.agregar_aventurero(aventurero):
             print("\nAventurero registrado exitosamente!\n")
 
+    def registrar_mision(self):
+        print("\nRegistrar Misión\n")
+        
+        nombre = input("Ingrese el nombre de la misión: ")
+        rango_mision = self.get_valid_int("Ingrese el rango de la misión (1-5): ", 1, 5)
+        recompensa = self.get_valid_float("Ingrese la recompensa de la misión: ", 0.0)
+        es_grupal = self.get_valid_input("¿Es una misión grupal? (s/n): ", ["s", "n"]) == "s"
+        min_miembros = 1 
+
+        if es_grupal:
+            min_miembros = self.get_valid_int("Ingrese la cantidad de miembros: ", 1, 100)
+        
+            mision = Mision(nombre=nombre, rango=rango_mision, recompensa=recompensa, es_grupal=es_grupal, min_miembros=min_miembros)
+            if self.gremio.agregar_mision(mision):
+                print("\n Misión registrada exitosamente!\n")
+            else:
+                print("\n Ya existe una misión con el mismo nombre.\n")
+
     def realizar_mision(self):
-        print("Realizar Misión")
-        
-        id_aventurero = self.get_valid_int("Ingrese el ID del aventurero: ", 1, 10000)
-        nombre_mision = input("Ingrese el nombre de la misión: ")
-        
-        aventurero = self.gremio.buscar_aventurero(id_aventurero)
-        mision = self.gremio.buscar_mision(nombre_mision)
-        
-        if aventurero and mision:
-            # Aquí podrías agregar lógica de dificultad, recompensas, etc.
-            print(f"El aventurero {aventurero.nombre} ha completado la misión {mision.nombre}.")
-            # Quizás actualizar experiencia, dinero, o habilidades aquí
-        else:
-            print("Error: Aventurero o misión no encontrados.")
+        pass
 
     def run(self):
         while True:
@@ -131,6 +144,16 @@ class Menu:
             elif opcion == "3":
                 self.realizar_mision()
             elif opcion == "4":
-                pass
+                while True:
+                    self.display_submenu_consultas()
+                    opcion_submenu = self.get_valid_input("Ingrese la opción deseada: ", ["1", "2", "3", "4"])
+                    if opcion_submenu == "1":
+                        pass 
+                    elif opcion_submenu == "2":
+                        pass
+                    elif opcion_submenu == "3":
+                        pass
+                    elif opcion_submenu == "4":
+                        break
             elif opcion == "5":
                 break
