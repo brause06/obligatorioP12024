@@ -2,7 +2,7 @@ from src.interface.menu import Menu
 
 def main():
     menu = Menu()
-    menu.display_menu()
+    menu.run()
 
 if __name__ == "__main__":
     main()

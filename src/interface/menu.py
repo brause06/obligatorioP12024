@@ -55,7 +55,7 @@ class Menu:
         print("3. Ranger")
 
         class_opcion = self.get_valid_input("Seleccione una opcion (1-3): ", ["1", "2", "3"])
-
+        print(class_opcion)
         try:
             name = input("Ingrese el nombre: ")
             if not name:
@@ -73,7 +73,7 @@ class Menu:
 
             #CREAR AVENTURERO
             aventurero = None
-            if class_opcion == 1: # Guerrero
+            if class_opcion == "1": # Guerrero
                 fuerza = self.get_valid_int("Ingrese la fuerza (1-100): ", 1, 100)
                 aventurero = Guerrero(name, id, puntos_habilidad, experiencia, dinero, fuerza)
 
@@ -153,7 +153,7 @@ class Menu:
                 if not aventurero:
                     print("Aventurero no encontrado")
                     continue
-                if id_aventurero in aventurero.id_aventurero:
+                if id_aventurero in aventureros_ids:
                     print("Aventurero ya registrado")
                     continue
 
