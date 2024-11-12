@@ -9,4 +9,9 @@ class Mago(Aventurero):
     def mana(self):
         return self.__mana
     
+    @mana.setter
+    def mana(self, value):
+        if not(1 <= value <= 1000):
+            raise ValueError("El mana debe estar entre 1 y 1000")
+        self.__mana = value
     
