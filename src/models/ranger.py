@@ -1,5 +1,5 @@
-from obligatorioP12024.src.models.aventurero import Aventurero
-from obligatorioP12024.src.models.mascota import Mascota
+from src.models.aventurero import Aventurero
+from src.models.mascota import Mascota
 
 
 class Ranger(Aventurero):

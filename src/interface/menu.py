@@ -1,9 +1,10 @@
-from obligatorioP12024.src.models.gremio import Gremio
-from obligatorioP12024.src.models.guerrero import Guerrero
-from obligatorioP12024.src.models.mago import Mago
-from obligatorioP12024.src.models.mascota import Mascota
-from obligatorioP12024.src.models.mision import Mision
-from obligatorioP12024.src.models.ranger import Ranger
+from src.models.gremio import Gremio
+from src.models.guerrero import Guerrero
+from src.models.mago import Mago
+from src.models.mascota import Mascota
+from src.models.mision import Mision
+from src.models.ranger import Ranger
+from typing import List
 
 
 class Menu:

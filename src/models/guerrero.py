@@ -1,4 +1,4 @@
-from obligatorioP12024.src.models.aventurero import Aventurero
+from src.models.aventurero import Aventurero
 
 
 class Guerrero(Aventurero):

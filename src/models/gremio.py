@@ -1,7 +1,7 @@
-from typing import Dict
+from typing import Dict, List
 
-from obligatorioP12024.src.models.aventurero import Aventurero
-from obligatorioP12024.src.models.mision import Mision
+from src.models.aventurero import Aventurero
+from src.models.mision import Mision
 
 class Gremio:
     def __init__(self):
