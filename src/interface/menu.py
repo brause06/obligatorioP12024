@@ -2,6 +2,7 @@ from obligatorioP12024.src.models.gremio import Gremio
 from obligatorioP12024.src.models.guerrero import Guerrero
 from obligatorioP12024.src.models.mago import Mago
 from obligatorioP12024.src.models.mascota import Mascota
+from obligatorioP12024.src.models.mision import Mision
 from obligatorioP12024.src.models.ranger import Ranger
 
 
@@ -99,7 +100,34 @@ class Menu:
             print(f"Error: {str(e)}")
 
     def registrar_mision(self):
-        pass
+        print("Registro de mision")
+
+        try:
+            nombre = input("Ingrese el nombre de la mision: ")
+            if not nombre:
+                print("El nombre no puede estar vacio")
+                return
+            
+            if nombre in self.gremio.misiones:
+                print("Ya existe una mision con ese nombre")
+                return
+
+            ranking = self.get_valid_int("Ingrese el ranking de la mision (1-5): ", 1, 5)
+            recompensa = self.get_valid_float("Ingrese la recompensa de la mision: ", 0)
+            es_grupal = self.get_valid_input("La mision es grupal? (s/n): ", ["s", "n"]) == "s"
+            min_miembros = 1
+            if es_grupal:
+                min_miembros = self.get_valid_int("Ingrese la cantidad minima de miembros (2-10): ", 2, 10)
+
+            mision = Mision(nombre, ranking, recompensa, es_grupal, min_miembros)
+            if self.gremio.agregar_mision(mision):
+                print("Mision registradado correctamente")
+            else:
+                print("Error al registrar la mision")
+        
+
+        except ValueError as e:
+            print(f"Error: {str(e)}")
 
     def realizar_mision(self):
         pass
