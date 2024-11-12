@@ -130,7 +130,51 @@ class Menu:
             print(f"Error: {str(e)}")
 
     def realizar_mision(self):
-        pass
+        print("ealizar mision")
+
+        nombre_mision = input("Ingrese el nombre de la mision: ")
+        mision = self.gremio.buscar_mision(nombre_mision)
+
+        if not mision:
+            print("Mision no encontrada")
+            return
+        
+        if mision.completada():
+            print("La mision ya fue completada")
+            return
+        
+        aventureros_ids = []
+        while True:
+            try:
+                id_aventurero = self.get_valid_int("Ingrese el id del aventurero: ", 1, 10000)
+                aventurero = self.gremio.buscar_aventurero(id_aventurero)
+
+                if not aventurero:
+                    print("Aventurero no encontrado")
+                    continue
+                if id_aventurero in aventurero.id_aventurero:
+                    print("Aventurero ya registrado")
+                    continue
+
+                aventureros_ids.append(id_aventurero)
+
+                if len(aventureros_ids) >= mision.min_miembros:
+                    siguiente = self.get_valid_input("Desea agregar otro aventurero? (s/n): ", ["s", "n"])
+                    if siguiente == "n":
+                        break
+
+            
+
+            except ValueError as e:
+                print(f"Error: {str(e)}")
+                return
+            
+            #TODO: realizar la mision faltan metodos de completar la mision
+
+
+
+
+
 
     def run(self):
         while True:
