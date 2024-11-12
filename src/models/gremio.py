@@ -35,4 +35,5 @@ def buscar_aventurero(self, id: int) -> Aventurero:
 def buscar_mision(self, nombre: str) -> Mision:
     return self.__misiones.get(nombre)
 
-
+def completar_mision(self, nombre: str,aventureros_ids: List[int]) -> bool:
+    pass
