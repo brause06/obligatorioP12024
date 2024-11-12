@@ -3,50 +3,50 @@ from abc import ABC
 
 class Aventurero(ABC):
     def __init__(self, nombre: str, id: int, puntos_habilidad: int, experiencia: int, dinero: float):
-        self._nombre = nombre
-        self._id = id
-        self._puntos_habilidad = puntos_habilidad
-        self._experiencia = experiencia
-        self._dinero = dinero
+        self.__nombre = nombre
+        self.__id = id
+        self.__puntos_habilidad = puntos_habilidad
+        self.__experiencia = experiencia
+        self.__dinero = dinero
 
         @property
         def nombre(self):
-            return self._nombre
+            return self.__nombre
 
         @nombre.setter
         def nombre(self, value):
-            self._nombre = value
+            self.__nombre = value
 
         @property
         def id(self):
-            return self._id
+            return self.__id
 
         @id.setter
         def id(self, value):
-            self._id = value
+            self.__id = value
 
         @property
         def puntos_habilidad(self):
-            return self._puntos_habilidad
+            return self.__puntos_habilidad
 
         @puntos_habilidad.setter
         def puntos_habilidad(self, value):
             if not(1 <= value <= 100):
                 raise ValueError("Los puntos de habilidad deben estar entre 1 y 100")
-            self._puntos_habilidad = value
+            self.__puntos_habilidad = value
 
         @property
         def experiencia(self):
-            return self._experiencia
+            return self.__experiencia
 
         @experiencia.setter
         def experiencia(self, value):
-            self._experiencia = value
+            self.__experiencia = value
 
         @property
         def dinero(self):
-            return self._dinero
+            return self.__dinero
 
         @dinero.setter
         def dinero(self, value):
-            self._dinero = value
+            self.__dinero = value
