@@ -26,8 +26,8 @@ class Menu:
             print("1. Ver Top 10 Aventureros con Más Misiones Resueltas")
             print("2. Ver Top 10 Aventureros con Mayor Habilidad")
             print("3. Ver Top 5 Misiones con Mayor Recompensa")
-            print("4. Ver Aventureros por Tipo")
-            print("5. Volver al Menú Principal")
+            print("4. Volver al menu principal")
+            print("5. Salir")
 
             opcion = self.get_valid_input("Ingrese la opcion deseada: ", ["1", "2", "3", "4", "5"])
 
