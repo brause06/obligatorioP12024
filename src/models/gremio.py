@@ -35,4 +35,12 @@ class Gremio:
         return self.__misiones.get(nombre)
 
     def completar_mision(self, nombre: str, aventureros_ids: List[int]) -> bool:
-        pass
+        mision = self.buscar_mision(nombre)
+        if not mision or mision.completada:
+            return False
+        aventureros = [self.buscar_aventurero(id) for id in aventureros_ids]
+
+        if None in aventureros:
+            return False
+        
+        return mision.completar_mision(aventureros)

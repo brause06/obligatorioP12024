@@ -140,14 +140,14 @@ class Menu:
             print("Mision no encontrada")
             return
         
-        if mision.completada():
+        if mision.completada:
             print("La mision ya fue completada")
             return
         
         aventureros_ids = []
         while True:
             try:
-                id_aventurero = self.get_valid_int("Ingrese el id del aventurero: ", 1, 10000)
+                id_aventurero = self.get_valid_int("Ingrese el id del aventurero: ", 0, 10000)
                 aventurero = self.gremio.buscar_aventurero(id_aventurero)
 
                 if not aventurero:
@@ -170,8 +170,10 @@ class Menu:
                 print(f"Error: {str(e)}")
                 return
             
-            #TODO: realizar la mision faltan metodos de completar la mision
-
+            if self.gremio.completar_mision(nombre_mision, aventureros_ids):
+                print("Mision completada con exito")
+            else:
+                print("Error al completar la mision")
 
 
 

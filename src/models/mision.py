@@ -1,3 +1,8 @@
+from typing import List
+
+from src.models.aventurero import Aventurero
+
+
 class Mision:
     def __init__(self, nombre: str, ranking: int, recompensa: int, es_grupal: bool, min_miembros: int = 1):
         self.__nombre = nombre
@@ -54,3 +59,6 @@ class Mision:
     @completada.setter
     def completada(self, value):
         self.__completada = value
+
+    def completar_mision(self, aventureros: List[Aventurero]) -> bool:
+        pass
