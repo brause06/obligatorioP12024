@@ -19,6 +19,27 @@ class Menu:
         print("4. Otras consultas")
         print("5. Salir")
 
+    def otras_consultas_menu(self):
+
+        while True:
+            print("\nOtras Consultas:")
+            print("1. Ver Top 10 Aventureros con Más Misiones Resueltas")
+            print("2. Ver Top 10 Aventureros con Mayor Habilidad")
+            print("3. Ver Top 5 Misiones con Mayor Recompensa")
+            print("4. Ver Aventureros por Tipo")
+            print("5. Volver al Menú Principal")
+
+            opcion = self.get_valid_input("Ingrese la opcion deseada: ", ["1", "2", "3", "4", "5"])
+
+            if opcion == "1":
+                self.top_aventureros_mas_misiones_resueltas()
+            elif opcion == "2":
+                self.top_aventureros_mayor_habilidad()
+            elif opcion == "3":
+                self.top_misiones_mayor_recompensa()
+            else:
+                break
+
     def get_valid_input(self, prompt: str, opciones_validas: List[str]):
         while True:
             user_input = input(prompt)
@@ -177,6 +198,17 @@ class Menu:
 
 
 
+    def top_aventureros_mas_misiones_resueltas(self):
+        pass
+
+    def top_aventureros_mayor_habilidad(self):
+        pass
+
+    def top_misiones_mayor_recompensa(self):
+        pass
+
+
+
 
 
     def run(self):
@@ -190,6 +222,6 @@ class Menu:
             elif opcion == "3":
                 self.realizar_mision()
             elif opcion == "4":
-                pass
+                self.otras_consultas_menu()
             elif opcion == "5":
                 break
