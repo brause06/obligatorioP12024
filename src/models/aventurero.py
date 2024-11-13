@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class Aventurero(ABC):
@@ -50,3 +50,11 @@ class Aventurero(ABC):
     @dinero.setter
     def dinero(self, value):
         self.__dinero = value
+
+    @abstractmethod
+    def calcular_rango(self) -> int:
+        pass
+
+    @abstractmethod
+    def calcular_habilidad_total(self) -> int:
+        pass
