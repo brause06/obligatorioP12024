@@ -1,4 +1,8 @@
 from abc import ABC, abstractmethod
+from typing import List
+
+from src.models.mision import Mision
+
 
 
 class Aventurero(ABC):
@@ -8,6 +12,7 @@ class Aventurero(ABC):
         self.__puntos_habilidad = puntos_habilidad
         self.__experiencia = experiencia
         self.__dinero = dinero
+        self.__misiones_completadas = []
 
     @property
     def nombre(self):
@@ -58,3 +63,16 @@ class Aventurero(ABC):
     @abstractmethod
     def calcular_habilidad_total(self) -> int:
         pass
+    
+    def agregar_mision_completada(self, mision: 'Mision'):
+        self.__misiones_completadas.append(mision)
+
+    def agregar_dinero(self, dinero: float):
+        self.dinero += dinero
+
+    def agregar_experiencia(self, experiencia: int):
+        self.experiencia += experiencia
+
+    @property
+    def misiones_completadas(self) -> List['Mision']:
+        return self.__misiones_completadas

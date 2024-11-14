@@ -3,6 +3,7 @@ from typing import List
 from src.models.aventurero import Aventurero
 
 
+
 class Mision:
     def __init__(self, nombre: str, ranking: int, recompensa: int, es_grupal: bool, min_miembros: int = 1):
         self.__nombre = nombre
@@ -11,7 +12,7 @@ class Mision:
         self.__es_grupal = es_grupal
         self.__min_miembros = min_miembros if es_grupal else 1
         self.__completada = False
-        self.__participantes: List[Aventurero] = []
+        self.__participantes = []
 
     @property
     def nombre(self):
@@ -75,8 +76,8 @@ class Mision:
     def completar_mision(self, aventureros: List[Aventurero]) -> bool:
         if not self.puede_ser_completada(aventureros):
             return False
-        self.completada(True)
-        self.participantes(aventureros)
+        self.completada = True
+        self.participantes = aventureros
 
         #Calcula recompensa
         recompensa_por_participante = self.recompensa / len(aventureros)

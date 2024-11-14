@@ -51,7 +51,7 @@ class Menu:
         while True:
             try:
                 user_input = int(input(prompt))
-                if min_value < user_input < max_value:
+                if min_value <= user_input <= max_value:
                     return user_input
                 print("Valor invalido")
             except ValueError:
@@ -111,7 +111,7 @@ class Menu:
                         print("El nombre de la mascota no puede estar vacio")
                         return
                     habilidad_mascota = self.get_valid_int("Ingrese la habilidad de la mascota (1-50): ", 1, 50)
-                    aventurero.mascota(Mascota(nombre_mascota, habilidad_mascota))
+                    aventurero.mascota = Mascota(nombre_mascota, habilidad_mascota)
 
             if self.gremio.agregar_aventurero(aventurero):
                 print("Aventurero registrado con exito")
@@ -191,10 +191,10 @@ class Menu:
                 print(f"Error: {str(e)}")
                 return
             
-            if self.gremio.completar_mision(nombre_mision, aventureros_ids):
-                print("Mision completada con exito")
-            else:
-                print("Error al completar la mision")
+        if self.gremio.completar_mision(nombre_mision, aventureros_ids):
+            print("Mision completada con exito")
+        else:
+            print("Error al completar la mision")
 
 
 
