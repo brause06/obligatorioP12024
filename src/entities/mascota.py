@@ -14,7 +14,7 @@ class Mascota():
     @property
     def puntos_habilidad(self):
         return self.__puntos_habilidad
-
+    
     @puntos_habilidad.setter
     def puntos_habilidad(self, value):
         if not(1 <= value <= 50):

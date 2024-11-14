@@ -8,7 +8,7 @@ class Guerrero(Aventurero):
     @property
     def fuerza(self):
         return self.__fuerza
-    
+   
     @fuerza.setter
     def fuerza(self, value):
         if not(1 <= value <= 100):

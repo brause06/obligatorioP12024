@@ -1,8 +1,8 @@
-from interface.menu import Menu
+from src.interface.menu import Menu
 
 def main():
     menu = Menu()
-    menu.run()  # inicia menú interactivo
+    menu.run()
 
 if __name__ == "__main__":
     main()

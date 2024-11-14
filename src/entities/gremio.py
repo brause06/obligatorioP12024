@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 from entities.aventurero import Aventurero
 from entities.mision import Mision
@@ -27,11 +27,19 @@ class Gremio():
             return False
         self.__misiones[mision.nombre] = mision
         return True
-    
     def buscar_aventurero(self, id: int) -> Aventurero:
         return self.__aventureros.get(id)
 
     def buscar_mision(self, nombre: str) -> Mision:
         return self.__misiones.get(nombre)
-    
-    
+
+    def completar_mision(self, nombre: str, aventureros_ids: List[int]) -> bool:
+        mision = self.buscar_mision(nombre)
+        if not mision or mision.completada:
+            return False
+        aventureros = [self.buscar_aventurero(id) for id in aventureros_ids]
+
+        if None in aventureros:
+            return False
+        
+        return mision.completar_mision(aventureros)

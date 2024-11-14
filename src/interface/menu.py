@@ -1,11 +1,11 @@
-from entities.gremio import Gremio
-from entities.guerrero import Guerrero
-from entities.mago import Mago
-from entities.ranger import Ranger
-from entities.mascota import Mascota
-from entities.mision import Mision
-
+from src.entities.gremio import Gremio
+from src.entities.guerrero import Guerrero
+from src.entities.mago import Mago
+from src.entities.mascota import Mascota
+from src.entities.mision import Mision
+from src.entities.ranger import Ranger
 from typing import List
+
 
 class Menu:
     def __init__(self):
@@ -132,7 +132,7 @@ class Menu:
 
     def realizar_mision(self):
         print("Realizar misión")
-
+        
         nombre_mision = input("Ingrese el nombre de la mision: ")
         mision = self.gremio.buscar_mision(nombre_mision)
 
@@ -163,16 +163,31 @@ class Menu:
                     siguiente = self.get_valid_input("Desea agregar otro aventurero? (s/n): ", ["s", "n"])
                     if siguiente == "n":
                         break
-           
+
+            
 
             except ValueError as e:
                 print(f"Error: {str(e)}")
                 return
             
-            if self.gremio.completar_mision(nombre_mision, aventureros_ids):
-                print("Mision completada con exito")
-            else:
-                print("Error al completar la mision")
+        if self.gremio.completar_mision(nombre_mision, aventureros_ids):
+            print("Mision completada con exito")
+        else:
+            print("Error al completar la mision")
+
+
+
+    def top_aventureros_mas_misiones_resueltas(self):
+        pass
+
+    def top_aventureros_mayor_habilidad(self):
+        pass
+
+    def top_misiones_mayor_recompensa(self):
+        pass
+
+
+
 
 
     def run(self):
