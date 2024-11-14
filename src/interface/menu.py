@@ -119,20 +119,29 @@ class Menu:
     def registrar_mision(self):
         print("\nRegistrar Misión\n")
         
-        nombre = input("Ingrese el nombre de la misión: ")
-        rango_mision = self.get_valid_int("Ingrese el rango de la misión (1-5): ", 1, 5)
-        recompensa = self.get_valid_float("Ingrese la recompensa de la misión: ", 0.0)
-        es_grupal = self.get_valid_input("¿Es una misión grupal? (s/n): ", ["s", "n"]) == "s"
-        min_miembros = 1 
+        try:
+            nombre = input("Ingrese el nombre de la misión: ")
+            if not nombre:
+                print("El nombre no puede estar vacio")
+                return
+            
+            rango_mision = self.get_valid_int("Ingrese el rango de la misión (1-5): ", 1, 5)
+            recompensa = self.get_valid_float("Ingrese la recompensa de la misión: ", 0.0)
+            es_grupal = self.get_valid_input("¿Es una misión grupal? (s/n): ", ["s", "n"]) == "s"
+            min_miembros = 1 
 
-        if es_grupal:
-            min_miembros = self.get_valid_int("Ingrese la cantidad mínima de miembros: ", 1, 100)
-        
+            if es_grupal:
+                min_miembros = self.get_valid_int("Ingrese la cantidad mínima de miembros: ", 1, 100)
+            
             mision = Mision(nombre=nombre, rango=rango_mision, recompensa=recompensa, es_grupal=es_grupal, min_miembros=min_miembros)
             if self.gremio.agregar_mision(mision):
                 print("\n Misión registrada exitosamente!\n")
             else:
                 print("\n Ya existe una misión con el mismo nombre.\n")
+
+        except ValueError as e:
+            print(f"Error: {str(e)}")
+            return
 
     def realizar_mision(self):
         print("Realizar misión")
@@ -189,10 +198,16 @@ class Menu:
 
 
     def top_aventureros_mayor_habilidad(self):
-        pass
+        print("\nTop 10 Aventureros con Mayor Habilidad:")
+        top_aventureros_habilidad = self.gremio.top_aventureros_mayor_habilidad()
+        for i, aventurero in enumerate(top_aventureros_habilidad, 1):
+            print(f"{i}. {aventurero.nombre} - Habilidad total: {aventurero.calcular_habilidad_total()}")
 
     def top_misiones_mayor_recompensa(self):
-        pass
+        top_misiones_recompensa = self.gremio.top_misiones_mayor_recompensa()
+        for i, mision in enumerate(top_misiones_recompensa, 1):
+            print(f"{i}. {mision.nombre} - Recompensa: {mision.recompensa}")
+
 
 
 
@@ -215,7 +230,7 @@ class Menu:
                     if opcion_submenu == "1":
                         pass 
                     elif opcion_submenu == "2":
-                        pass
+                        self.top_aventureros_mayor_habilidad()
                     elif opcion_submenu == "3":
                         pass
                     elif opcion_submenu == "4":
