@@ -73,5 +73,6 @@ class Aventurero(ABC):
     def misiones_completadas(self) -> List['Mision']:
         return self.__misiones_completadas
 
-    def cant_misiones_completadas(self) -> int:
+    @property
+    def cant_misiones_completadas(self):
         return len(self.__misiones_completadas)
