@@ -27,11 +27,15 @@ class Menu:
         print("4. Volver al menú principal")
 
     def get_valid_input(self, prompt: str, opciones_validas: List[str]):
-        user_input = input(prompt)
-        if user_input in opciones_validas:
-            return user_input
-        print("Opción inválida.\n")
-        return None
+        try:
+            user_input = input(prompt)
+            if user_input in opciones_validas:
+                return user_input
+            print("Opción inválida.\n")
+            return None
+        except ValueError:
+            print("Valor inválido.\n")
+            return None
 
     def get_valid_int(self, prompt: str, min_value: int, max_value: int):
         try:
@@ -177,8 +181,12 @@ class Menu:
 
 
 
-    def top_aventureros_mas_misiones_resueltas(self):
-        pass
+    def ver_top_aventureros_mas_misiones_resueltas(self):
+        print("\nTop 10 de aventureros con más misiones resueltas\n")
+        top = self.gremio.top_10_aventureros_misiones()
+        for indice, nombre in top:
+            print(f"{indice}. {nombre}")
+
 
     def top_aventureros_mayor_habilidad(self):
         pass

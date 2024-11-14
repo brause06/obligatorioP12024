@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
-
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from entities.mision import Mision
 
@@ -72,3 +72,6 @@ class Aventurero(ABC):
     @property
     def misiones_completadas(self) -> List['Mision']:
         return self.__misiones_completadas
+
+    def cant_misiones_completadas(self) -> int:
+        return len(self.__misiones_completadas)

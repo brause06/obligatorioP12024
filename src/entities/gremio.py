@@ -43,3 +43,22 @@ class Gremio():
             return False
         
         return mision.completar_mision(aventureros)
+    
+    def top_10_aventureros_misiones(self) -> List[tuple]:
+        #creo una tupla con el nombre del aventurero y la cantidad de misiones completadas
+        aventureros_con_misiones = [
+            (aventurero.nombre, aventurero.cant_misiones_completadas())
+            for aventurero in self.__aventureros.values()]
+        
+        #ordeno por cantidad de aventureros y luego por orden alfabetico     
+        top_aventureros = sorted(aventureros_con_misiones, key=lambda x: (-x[1], x[0]))
+
+        #obtengo una lista con el indice y nombre topeada hasta 10
+        top_aventureros_indice_nombre = [(indice + 1, nombre) for indice, (nombre, _) in enumerate(top_aventureros[:10])]
+        
+        return top_aventureros_indice_nombre
+
+
+        
+
+

@@ -89,7 +89,7 @@ class Mision():
             4: 50,   # Misión rango 4: 50 puntos de experiencia
             5: 100   # Misión rango 5: 100 puntos de experiencia
         }
-        experiencia = recompensa_experiencia[self.ranking]
+        experiencia = recompensa_experiencia[self.rango]
 
         # Distribuye recompensas y experiencia a cada participante
         for aventurero in aventureros:
@@ -105,4 +105,4 @@ class Mision():
     def puede_ser_completada(self, aventureros: List[Aventurero]) -> bool:
         if len(aventureros) < self.min_miembros:
             return False
-        return all(aventurero.calcular_rango() >= self.ranking for aventurero in aventureros)
+        return all(aventurero.calcular_rango() >= self.rango for aventurero in aventureros)
