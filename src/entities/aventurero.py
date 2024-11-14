@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from src.models.mision import Mision
+from src.entities.mision import Mision
 
 
 

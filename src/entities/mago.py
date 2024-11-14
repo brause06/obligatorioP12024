@@ -1,4 +1,4 @@
-from src.models.aventurero import Aventurero
+from src.entities.aventurero import Aventurero
 
 
 class Mago(Aventurero):

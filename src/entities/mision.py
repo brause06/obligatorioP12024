@@ -1,6 +1,6 @@
 from typing import List
 
-from src.models.aventurero import Aventurero
+from src.entities.aventurero import Aventurero
 
 
 

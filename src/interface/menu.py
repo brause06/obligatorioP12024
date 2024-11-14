@@ -1,9 +1,9 @@
-from src.models.gremio import Gremio
-from src.models.guerrero import Guerrero
-from src.models.mago import Mago
-from src.models.mascota import Mascota
-from src.models.mision import Mision
-from src.models.ranger import Ranger
+from src.entities.gremio import Gremio
+from src.entities.guerrero import Guerrero
+from src.entities.mago import Mago
+from src.entities.mascota import Mascota
+from src.entities.mision import Mision
+from src.entities.ranger import Ranger
 from typing import List
 
 

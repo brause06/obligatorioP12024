@@ -1,7 +1,7 @@
 from typing import Dict, List
 
-from src.models.aventurero import Aventurero
-from src.models.mision import Mision
+from src.entities.aventurero import Aventurero
+from src.entities.mision import Mision
 
 class Gremio:
     def __init__(self):
