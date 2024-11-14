@@ -43,3 +43,7 @@ class Gremio():
             return False
         
         return mision.completar_mision(aventureros)
+    
+    def top_aventureros_mayor_habilidad(self, limite: int = 10) -> List[Aventurero]:
+        aventureros_ordenados = sorted(self.__aventureros.values(), key=lambda x: (x.calcular_habilidad_total(), x.nombre), reverse=True)
+        return aventureros_ordenados[:limite]

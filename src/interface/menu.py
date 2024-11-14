@@ -124,11 +124,11 @@ class Menu:
         if es_grupal:
             min_miembros = self.get_valid_int("Ingrese la cantidad mínima de miembros: ", 1, 100)
         
-            mision = Mision(nombre=nombre, rango=rango_mision, recompensa=recompensa, es_grupal=es_grupal, min_miembros=min_miembros)
-            if self.gremio.agregar_mision(mision):
-                print("\n Misión registrada exitosamente!\n")
-            else:
-                print("\n Ya existe una misión con el mismo nombre.\n")
+        mision = Mision(nombre=nombre, rango=rango_mision, recompensa=recompensa, es_grupal=es_grupal, min_miembros=min_miembros)
+        if self.gremio.agregar_mision(mision):
+            print("\n Misión registrada exitosamente!\n")
+        else:
+            print("\n Ya existe una misión con el mismo nombre.\n")
 
     def realizar_mision(self):
         print("Realizar misión")
@@ -181,7 +181,10 @@ class Menu:
         pass
 
     def top_aventureros_mayor_habilidad(self):
-        pass
+        print("\nTop 10 Aventureros con Mayor Habilidad:")
+        top_aventureros_habilidad = self.gremio.top_aventureros_mayor_habilidad()
+        for i, aventurero in enumerate(top_aventureros_habilidad, 1):
+            print(f"{i}. {aventurero.nombre} - Habilidad total: {aventurero.calcular_habilidad_total()}")
 
     def top_misiones_mayor_recompensa(self):
         pass
@@ -207,7 +210,7 @@ class Menu:
                     if opcion_submenu == "1":
                         pass 
                     elif opcion_submenu == "2":
-                        pass
+                        self.top_aventureros_mayor_habilidad()
                     elif opcion_submenu == "3":
                         pass
                     elif opcion_submenu == "4":
