@@ -1,6 +1,6 @@
 from typing import List
 
-from src.entities.aventurero import Aventurero
+from entities.aventurero import Aventurero
 
 
 class Mision():

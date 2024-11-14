@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from src.entities.mision import Mision
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from entities.mision import Mision
 
 class Aventurero(ABC):
     def __init__(self, nombre: str, id: int, puntos_habilidad: int, experiencia: int, dinero: float):

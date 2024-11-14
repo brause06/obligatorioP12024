@@ -1,5 +1,5 @@
-from src.entities.aventurero import Aventurero
-from src.entities.mascota import Mascota
+from entities.aventurero import Aventurero
+from entities.mascota import Mascota
 
 
 class Ranger(Aventurero):

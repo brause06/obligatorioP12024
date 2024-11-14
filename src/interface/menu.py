@@ -1,9 +1,9 @@
-from src.entities.gremio import Gremio
-from src.entities.guerrero import Guerrero
-from src.entities.mago import Mago
-from src.entities.mascota import Mascota
-from src.entities.mision import Mision
-from src.entities.ranger import Ranger
+from entities.gremio import Gremio
+from entities.guerrero import Guerrero
+from entities.mago import Mago
+from entities.mascota import Mascota
+from entities.mision import Mision
+from entities.ranger import Ranger
 from typing import List
 
 
@@ -132,7 +132,7 @@ class Menu:
 
     def realizar_mision(self):
         print("Realizar misión")
-        
+
         nombre_mision = input("Ingrese el nombre de la mision: ")
         mision = self.gremio.buscar_mision(nombre_mision)
 
