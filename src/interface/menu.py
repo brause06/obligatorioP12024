@@ -122,7 +122,7 @@ class Menu:
         min_miembros = 1 
 
         if es_grupal:
-            min_miembros = self.get_valid_int("Ingrese la cantidad de miembros: ", 1, 100)
+            min_miembros = self.get_valid_int("Ingrese la cantidad mínima de miembros: ", 1, 100)
         
             mision = Mision(nombre=nombre, rango=rango_mision, recompensa=recompensa, es_grupal=es_grupal, min_miembros=min_miembros)
             if self.gremio.agregar_mision(mision):
@@ -131,7 +131,49 @@ class Menu:
                 print("\n Ya existe una misión con el mismo nombre.\n")
 
     def realizar_mision(self):
-        pass
+        print("Realizar misión")
+
+        nombre_mision = input("Ingrese el nombre de la mision: ")
+        mision = self.gremio.buscar_mision(nombre_mision)
+
+        if not mision:
+            print("Mision no encontrada")
+            return
+        
+        if mision.completada:
+            print("La mision ya fue completada")
+            return
+        
+        aventureros_ids = []
+        while True:
+            try:
+                id_aventurero = self.get_valid_int("Ingrese el id del aventurero: ", 0, 10000)
+                aventurero = self.gremio.buscar_aventurero(id_aventurero)
+
+                if not aventurero:
+                    print("Aventurero no encontrado")
+                    continue
+                if id_aventurero in aventureros_ids:
+                    print("Aventurero ya registrado")
+                    continue
+
+                aventureros_ids.append(id_aventurero)
+
+                if len(aventureros_ids) >= mision.min_miembros:
+                    siguiente = self.get_valid_input("Desea agregar otro aventurero? (s/n): ", ["s", "n"])
+                    if siguiente == "n":
+                        break
+           
+
+            except ValueError as e:
+                print(f"Error: {str(e)}")
+                return
+            
+            if self.gremio.completar_mision(nombre_mision, aventureros_ids):
+                print("Mision completada con exito")
+            else:
+                print("Error al completar la mision")
+
 
     def run(self):
         while True:
