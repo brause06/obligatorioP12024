@@ -10,9 +10,12 @@ Falta realizar el readme TODO
 El proyecto simula un gremio de aventureros, donde se pueden registrar aventureros(ranger, mago, guerrero) y misiones. Los aventureros pueden completar misiones y obtener recompensas en forma de experiencia y dinero. Además, se pueden consultar rankings de aventureros por habilidad total, misiones por mayor recompensa y aventureros con más misiones completadas.
 
 # Como ejecutar el proyecto:
-abrir terminal y ejecutar el comando:
-python src/main.py
+-abrir terminal y ejecutar el comando:
+
+-python src/main.py
+
 -se debe seleccionar la opcion deseada en el menu principal (1- Registrar aventurero, 2- Registrar mision, 3- Realizar mision, 4- Otras consultas, 5- Salir)
+
     -si se selecciona la opcion 1, se debe seleccionar que tipo de aventurero se desea registrar (1- Ranger, 2- Mago, 3- Guerrero)
         -si se selecciona Ranger, se debe ingresar el nombre, id, puntos de habilidad, experiencia, dinero y si tiene o no mascota (si tiene, se debe ingresar el nombre de la mascota y sus puntos de habilidad)
         -si se selecciona Mago, se debe ingresar el nombre, id, puntos de habilidad, experiencia, dinero y mana
