@@ -1,4 +1,4 @@
-Falta realizar el readme TODO
+
 
 # Simulador de Gremio de Aventureros (Dungeons & Dragons)
 
