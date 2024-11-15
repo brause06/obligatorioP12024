@@ -98,7 +98,7 @@ class Menu:
                 return 
             aventurero = Guerrero(nombre, id_unico, puntos_habilidad, experiencia, dinero, fuerza)
         elif opcion_clase == "2":  # Mago
-            mana = self.get_valid_int("\nIngrese mana (0-1000): ", 0, 100)
+            mana = self.get_valid_int("\nIngrese mana (0-1000): ", 0, 1000)
             if mana is None:
                 return 
             aventurero = Mago(nombre, id_unico, puntos_habilidad, experiencia, dinero, mana)
