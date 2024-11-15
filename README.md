@@ -36,11 +36,11 @@ El proyecto simula un gremio de aventureros, donde se pueden registrar aventurer
 
 # Explicacion del UML:
 
--Gremio: es la clase principal que contiene los metodos para registrar aventureros y misiones, realizar misiones y consultar rankings
--Aventurero: es la clase base abstracta de cual heredan Guerrero, Mago y Ranger
--Guerrero: es una clase que hereda de aventurero 
--Mago: es una clase que hereda de aventurero 
--Ranger: es una clase que hereda de aventurero 
--Mascota: es una clase que contiene los atributos de una mascota(un Ranger puede tener una)
--Mision: es una clase que representa las misiones que se pueden realizar
--Menu: es una clase que contiene los metodos para mostrar el menu y el submenu de consultas y los metodos para obtener una entrada valida del usuario. Es donde se crea el gremio y se ejecuta el menu principal
+        -Gremio: es la clase principal que contiene los metodos para registrar aventureros y misiones, realizar misiones y consultar rankings
+        -Aventurero: es la clase base abstracta de cual heredan Guerrero, Mago y Ranger
+        -Guerrero: es una clase que hereda de aventurero 
+        -Mago: es una clase que hereda de aventurero 
+        -Ranger: es una clase que hereda de aventurero 
+        -Mascota: es una clase que contiene los atributos de una mascota(un Ranger puede tener una)
+        -Mision: es una clase que representa las misiones que se pueden realizar
+        -Menu: es una clase que contiene los metodos para mostrar el menu y el submenu de consultas y los metodos para obtener una entrada valida del usuario. Es donde se crea el gremio y se ejecuta el menu principal
