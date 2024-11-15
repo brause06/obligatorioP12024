@@ -55,7 +55,7 @@ class Gremio():
     def top_10_aventureros_misiones(self) -> List[tuple]:
         #creo una tupla con el nombre del aventurero y la cantidad de misiones completadas
         aventureros_con_misiones = [
-            (aventurero.nombre, aventurero.cant_misiones_completadas())
+            (aventurero.nombre, aventurero.cant_misiones_completadas)
             for aventurero in self.__aventureros.values()]
         
         #ordeno por cantidad de aventureros y luego por orden alfabetico     

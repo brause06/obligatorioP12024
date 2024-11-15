@@ -12,6 +12,7 @@ class Menu:
         self.gremio = Gremio()    
 
     def display_menu(self):
+        print("****************************************************")
         print("Seleccione una opcion:")  
         print("1. Registrar aventurero")
         print("2. Registrar mision")
@@ -20,6 +21,7 @@ class Menu:
         print("5. Salir")
 
     def display_submenu_consultas(self):
+        print("****************************************************")
         print("\nConsultas:")
         print("1. Ver Top 10 Aventureros con Más Misiones Resueltas")
         print("2. Ver Top 10 Aventureros con Mayor Habilidad")
@@ -60,6 +62,7 @@ class Menu:
             return None  
 
     def registrar_aventurero(self):
+        print("****************************************************")
         print("\nRegistrar Aventurero en el Gremio\n")
         print("Seleccione la clase de aventurero:")
         print("1 - Guerrero")
@@ -71,42 +74,42 @@ class Menu:
         if opcion_clase is None:
             return  # vuelvo al menú si la entrada no es valida 
 
-        id_unico = self.get_valid_int("Ingrese un ID único: ", 1, 10000)
+        id_unico = self.get_valid_int("\nIngrese un ID único: ", 1, 10000)
         if id_unico is None:
             return 
         if self.gremio.buscar_aventurero(id_unico):
             print("Ya existe un aventurero registrado con este ID. Intente nuevamente.")
             return
 
-        nombre = input("Ingrese el nombre del aventurero: ")
-        puntos_habilidad = self.get_valid_int("Ingrese puntos de habilidad (0-100): ", 0, 100)
+        nombre = input("\nIngrese el nombre del aventurero: ")
+        puntos_habilidad = self.get_valid_int("\nIngrese puntos de habilidad (1-100): ", 1, 100)
         if puntos_habilidad is None:
             return 
-        experiencia = self.get_valid_int("Ingrese experiencia (0-1000): ", 0, 1000)
+        experiencia = self.get_valid_int("\nIngrese experiencia (>= 0): ", 0, float('inf'))
         if experiencia is None:
             return 
-        dinero = self.get_valid_float("Ingrese cantidad de dinero (>= 0): ", 0.0)
+        dinero = self.get_valid_float("\nIngrese cantidad de dinero (>= 0): ", 0.0)
         if dinero is None:
             return 
 
         if opcion_clase == "1": 
-            fuerza = self.get_valid_int("Ingrese fuerza (0-100): ", 0, 100)
+            fuerza = self.get_valid_int("\nIngrese fuerza (0-100): ", 0, 100)
             if fuerza is None:
                 return 
             aventurero = Guerrero(nombre, id_unico, puntos_habilidad, experiencia, dinero, fuerza)
         elif opcion_clase == "2":  # Mago
-            mana = self.get_valid_int("Ingrese mana (0-1000): ", 0, 1000)
+            mana = self.get_valid_int("\nIngrese mana (0-1000): ", 0, 100)
             if mana is None:
                 return 
             aventurero = Mago(nombre, id_unico, puntos_habilidad, experiencia, dinero, mana)
         elif opcion_clase == "3":  # Ranger
-            tiene_mascota = self.get_valid_input("¿El ranger tiene mascota? (s/n): ", ["s", "n"])
+            tiene_mascota = self.get_valid_input("\n¿El ranger tiene mascota? (s/n): ", ["s", "n"])
             if tiene_mascota is None:
                 return
             mascota = None
             if tiene_mascota == "s":
-                nombre_mascota = input("Ingrese el nombre de la mascota: ")
-                puntos_habilidad_mascota = self.get_valid_int("Ingrese puntos de habilidad de la mascota (1-50): ", 1, 50)
+                nombre_mascota = input("\nIngrese el nombre de la mascota: ")
+                puntos_habilidad_mascota = self.get_valid_int("\nIngrese puntos de habilidad de la mascota (1-50): ", 1, 50)
                 if puntos_habilidad_mascota is None:
                     return  
                 mascota = Mascota(nombre_mascota, puntos_habilidad_mascota)
@@ -117,21 +120,22 @@ class Menu:
             print("\nAventurero registrado exitosamente!\n")
 
     def registrar_mision(self):
-        print("\nRegistrar Misión\n")
+        print("****************************************************")
+        print("\nRegistrar Misión")
         
         try:
-            nombre = input("Ingrese el nombre de la misión: ")
+            nombre = input("\nIngrese el nombre de la misión: ")
             if not nombre:
                 print("El nombre no puede estar vacio")
                 return
             
-            rango_mision = self.get_valid_int("Ingrese el rango de la misión (1-5): ", 1, 5)
-            recompensa = self.get_valid_float("Ingrese la recompensa de la misión: ", 0.0)
-            es_grupal = self.get_valid_input("¿Es una misión grupal? (s/n): ", ["s", "n"]) == "s"
+            rango_mision = self.get_valid_int("\nIngrese el rango de la misión (1-5): ", 1, 5)
+            recompensa = self.get_valid_float("\nIngrese la recompensa de la misión: ", 0.0)
+            es_grupal = self.get_valid_input("\n¿Es una misión grupal? (s/n): ", ["s", "n"]) == "s"
             min_miembros = 1 
 
             if es_grupal:
-                min_miembros = self.get_valid_int("Ingrese la cantidad mínima de miembros: ", 1, 100)
+                min_miembros = self.get_valid_int("\nIngrese la cantidad mínima de miembros: ", 1, 100)
             
             mision = Mision(nombre=nombre, rango=rango_mision, recompensa=recompensa, es_grupal=es_grupal, min_miembros=min_miembros)
             if self.gremio.agregar_mision(mision):
@@ -144,36 +148,37 @@ class Menu:
             return
 
     def realizar_mision(self):
-        print("Realizar misión")
+        print("****************************************************")
+        print("\nRealizar misión\n")
 
-        nombre_mision = input("Ingrese el nombre de la mision: ")
+        nombre_mision = input("\nIngrese el nombre de la mision: ")
         mision = self.gremio.buscar_mision(nombre_mision)
 
         if not mision:
-            print("Mision no encontrada")
+            print("\nMision no encontrada\n")
             return
         
         if mision.completada:
-            print("La mision ya fue completada")
+            print("\nLa mision ya fue completada\n")
             return
         
         aventureros_ids = []
         while True:
             try:
-                id_aventurero = self.get_valid_int("Ingrese el id del aventurero: ", 0, 10000)
+                id_aventurero = self.get_valid_int("\nIngrese el id del aventurero: ", 0, 10000)
                 aventurero = self.gremio.buscar_aventurero(id_aventurero)
 
                 if not aventurero:
-                    print("Aventurero no encontrado")
+                    print("\nAventurero no encontrado\n")
                     continue
                 if id_aventurero in aventureros_ids:
-                    print("Aventurero ya registrado")
+                    print("\nAventurero ya registrado\n")
                     continue
 
                 aventureros_ids.append(id_aventurero)
 
                 if len(aventureros_ids) >= mision.min_miembros:
-                    siguiente = self.get_valid_input("Desea agregar otro aventurero? (s/n): ", ["s", "n"])
+                    siguiente = self.get_valid_input("\nDesea agregar otro aventurero? (s/n): ", ["s", "n"])
                     if siguiente == "n":
                         break
 
@@ -184,13 +189,14 @@ class Menu:
                 return
             
         if self.gremio.completar_mision(nombre_mision, aventureros_ids):
-            print("Mision completada con exito")
+            print("\nMision completada con exito\n")
         else:
-            print("Error al completar la mision")
+            print("\nError al completar la mision\n")
 
 
 
     def ver_top_aventureros_mas_misiones_resueltas(self):
+        print("****************************************************")
         print("\nTop 10 de aventureros con más misiones resueltas\n")
         top = self.gremio.top_10_aventureros_misiones()
         for indice, nombre in top:
@@ -198,12 +204,15 @@ class Menu:
 
 
     def top_aventureros_mayor_habilidad(self):
+        print("****************************************************")
         print("\nTop 10 Aventureros con Mayor Habilidad:")
         top_aventureros_habilidad = self.gremio.top_aventureros_mayor_habilidad()
         for i, aventurero in enumerate(top_aventureros_habilidad, 1):
             print(f"{i}. {aventurero.nombre} - Habilidad total: {aventurero.calcular_habilidad_total()}")
 
     def top_misiones_mayor_recompensa(self):
+        print("****************************************************")
+        print("\nTop 5 misiones con mayor recompensa:")
         top_misiones_recompensa = self.gremio.top_misiones_mayor_recompensa()
         for i, mision in enumerate(top_misiones_recompensa, 1):
             print(f"{i}. {mision.nombre} - Recompensa: {mision.recompensa}")
@@ -228,11 +237,11 @@ class Menu:
                     self.display_submenu_consultas()
                     opcion_submenu = self.get_valid_input("Ingrese la opción deseada: ", ["1", "2", "3", "4"])
                     if opcion_submenu == "1":
-                        pass 
+                        self.ver_top_aventureros_mas_misiones_resueltas()
                     elif opcion_submenu == "2":
                         self.top_aventureros_mayor_habilidad()
                     elif opcion_submenu == "3":
-                        pass
+                        self.top_misiones_mayor_recompensa()
                     elif opcion_submenu == "4":
                         break
             elif opcion == "5":
